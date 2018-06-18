@@ -1,5 +1,5 @@
 #include <cassert>
-
+#include <except.h>
 #include "vector.hpp"
 
 vector_t::vector_t()
@@ -77,7 +77,7 @@ void vector_t::push_back(int value)
 		delete [] tmp;
 		els[size-1] = value;
 		    }
-		catch (xalloc xa) { cout << "недостаточно памяти";}      
+		catch (xalloc xa) { std::cout << "недостаточно памяти";}      
 	}
 	else {  els[size] = value;
 	        size++;
