@@ -78,7 +78,7 @@ void vector_t::push_back(int value)
 		els[size-1] = value;
 		      
 		catch (...) { cout << "недостаточно памяти";}      
-	} } }
+	}
 	else {  els[size] = value;
 	        size++;
 	     }
