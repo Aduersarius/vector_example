@@ -67,11 +67,11 @@ void vector_t::push_back(int value)
 	if (size == capacity){
 		size++;
 		capacity *= 2;
-		try { int* tmp = new int[capacity]; }
+		try { if (!(int* tmp = new int[capacity])) throw; }
 		for (int i = 0; i < size; i++)
 	        tmp[i] = els[i];
 		delete [] els;
-		try { els = new int[capacity]; }
+		try { if (!(els = new int[capacity]))  throw; }
 		for (int i = 0; i < size-1; i++)
 	        els[i] = tmp[i];
 		delete [] tmp;
