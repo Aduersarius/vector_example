@@ -67,19 +67,17 @@ void vector_t::push_back(int value)
 	if (size == capacity){
 		size++;
 		capacity *= 2;
-		if (!(int* tmp = new int[capacity]))
-			throw "недостаточно памяти";
-		else{
+		try { int* tmp = new int[capacity]; }
 		for (int i = 0; i < size; i++)
 	        tmp[i] = els[i];
 		delete [] els;
-		if (!(els = new int[capacity]))
-			throw "недостаточно памяти"
-			else {
+		try { els = new int[capacity]; }
 		for (int i = 0; i < size-1; i++)
 	        els[i] = tmp[i];
 		delete [] tmp;
 		els[size-1] = value;
+		      
+		catch (...) { cout << "недостаточно памяти";}      
 	} } }
 	else {  els[size] = value;
 	        size++;
