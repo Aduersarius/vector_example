@@ -67,7 +67,8 @@ void vector_t::push_back(int value)
 	if (size == capacity){
 		size++;
 		capacity *= 2;
-		try { int* tmp = new int[capacity];
+		int * tmp = nullptr;
+		try { tmp = new int[capacity];
 		for (int i = 0; i < size; i++)
 	        tmp[i] = els[i];
 		delete [] els;
@@ -77,7 +78,7 @@ void vector_t::push_back(int value)
 		delete [] tmp;
 		els[size-1] = value;
 		    }
-		catch (const std::bad_alloc& e) { std::cout << "недостаточно памяти";}      
+		catch (const std::bad_alloc& e) { std::cout << "недостаточно памяти"; delete [] tmp;}      
 	}
 	else {  els[size] = value;
 	        size++;
